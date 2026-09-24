@@ -1,0 +1,9 @@
+{
+  "name": "原竞·五艺",
+  "short_name": "五艺",
+  "start_url": ".",
+  "display": "fullscreen",
+  "background_color": "#121826",
+  "theme_color": "#121826",
+  "orientation": "landscape"
+}
