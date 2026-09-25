@@ -25,17 +25,8 @@
     background:#f7f3ea;
     overflow:hidden;overscroll-behavior:none;
     display:flex;flex-direction:column; }/* 竖屏伪横屏：整个游戏界面旋转90°变成横向画面（王者荣耀式），全前缀兼容各浏览器内核 */
-  #game.rot90 { position:fixed;top:0;left:0;
-    width:100vh;width:100dvh;height:100vw;height:100dvw;
-    transform:rotate(90deg) translateY(-100%);
-    -webkit-transform:rotate(90deg) translateY(-100%);
-    transform-origin:top left;
-    -webkit-transform-origin:top left;
-    -moz-transform-origin:top left;
-    -ms-transform-origin:top left;
-    -o-transform-origin:top left;/* 左侧英雄展示 */
-  .left { flex:1.3;min-width:0;position:relative;
-    display:flex;align-items:flex-end;justify-content:center; }.hero-img { position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  #game.rot90 { position:fixed;left:0;top:0;
+    width:100vw;width:100dvw;height:100vh;height:100dvh;.hero-img { position:absolute;left:50%;bottom:0;transform:translateX(-50%);
     height:96%;max-width:96%;width:auto;object-fit:contain;
     filter:drop-shadow(0 -4px 30px rgba(217,180,106,.26)) drop-shadow(0 12px 40px rgba(0,0,0,.6));
     transition:opacity .35s ease, transform .35s ease;
@@ -1029,9 +1020,22 @@
   var g=document.getElementById('game');
   if(!g)return;
   var portrait=window.innerWidth<window.innerHeight&&isPhone;
-  if(portrait){g.classList.add('rot90');}else{g.classList.remove('rot90');}
-
-      // 竖屏适配：启动层加 .portrait 缩小字号，横排不换行（不依赖 CSS 媒体查询）
+  if(portrait){
+    g.classList.add('rot90');
+    var _s=window.innerWidth/1610;
+    g.style.transform='scale('+_s+')';
+    g.style.webkitTransform='scale('+_s+')';
+    g.style.transformOrigin='center center';
+    g.style.webkitTransformOrigin='center center';
+  }else{
+    g.classList.remove('rot90');
+    g.style.transform='';
+    g.style.webkitTransform='';
+    g.style.transformOrigin='';
+    g.style.webkitTransformOrigin='';
+  }
+}
+// 竖屏适配：启动层加 .portrait 缩小字号，横排不换行（不依赖 CSS 媒体查询）
   function applyPortrait(){
   var l=document.getElementById('launch');
   if(!l)return;
