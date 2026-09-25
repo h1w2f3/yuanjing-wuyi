@@ -1019,7 +1019,7 @@
   function applyRotate(){
   var g=document.getElementById('game');
   if(!g)return;
-  var portrait=window.innerWidth<window.innerHeight&&window.innerWidth<900;
+  var portrait=window.innerWidth<window.innerHeight;
   if(portrait){
     g.classList.add('rot90');
     var _s=window.innerWidth/1610;
@@ -1039,7 +1039,7 @@
   function applyPortrait(){
   var l=document.getElementById('launch');
   if(!l)return;
-  var p=window.innerWidth<window.innerHeight&&window.innerWidth<900;
+  var p=window.innerWidth<window.innerHeight;
   l.classList.remove('rot90'); l.classList.toggle('portrait', p); l.classList.toggle('plain', p && !supportsTransform);
   }
   window.goDirect=function(){
@@ -1058,7 +1058,7 @@
   function hideLaunch(){launch.classList.add('hide');}
   launch.addEventListener('click',function(e){
   if(!e.target.closest('.l-btn'))return;
-  hideLaunch();document.getElementById('matchFrameWrap').classList.add('show');
+  hideLaunch();document.getElementById('matchFrameWrap').classList.add('show');try{applyRotate();}catch(e){}
   // 手机端自动请求全屏（电脑端不请求，方便分屏）
   var isTouch=('ontouchstart' in window)||(navigator.maxTouchPoints>0);
   if(isTouch){
