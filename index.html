@@ -139,7 +139,8 @@
   #rotateTip { display:none;position:fixed;inset:0;z-index:9999;background:rgba(5,8,16,.97);flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center; }#rotateTip .rt-ico { width:56px;height:56px;border:2px solid var(--gold);border-radius:14px;position:relative;animation:rtSpin 1.6s ease-in-out infinite; }#rotateTip .rt-ico::after { content:"";position:absolute;top:50%;left:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border:2px solid var(--gold);border-left-color:transparent;border-radius:50%; }
   @keyframes rtSpin{0%,20% { transform:rotate(0); }70%,100% { transform:rotate(90deg); }}#rotateTip .rt-txt { font-size:18px;letter-spacing:4px;text-indent:4px;color:var(--gold);font-weight:700; }
   /* 显示/隐藏完全由 JS 依据视口宽高判定 */
-</style>
+
+@media (orientation: portrait){.launch{flex-direction:column;justify-content:center;align-items:center;gap:16px}.launch .l-logo{font-size:30px;letter-spacing:4px;text-indent:4px}.launch .l-sub{font-size:12px;letter-spacing:3px;text-indent:3px}.launch .l-btn{padding:8px 12px;font-size:14px;letter-spacing:2px;text-indent:2px;white-space:nowrap;flex-shrink:0}}</style>
 </head>
 <body>
 <div class="game" id="game">
