@@ -1069,7 +1069,7 @@
   function hideLaunch(){launch.classList.add('hide');}
   launch.addEventListener('click',function(e){
   if(!e.target.closest('.l-btn'))return;
-  hideLaunch();document.getElementById('matchFrameWrap').classList.add('show');try{applyRotate();}catch(e){}
+  hideLaunch();try{applyRotate();}catch(e){}
   // 手机端自动请求全屏（电脑端不请求，方便分屏）
   var isTouch=('ontouchstart' in window)||(navigator.maxTouchPoints>0);
   if(isTouch){
