@@ -1020,15 +1020,26 @@
   var g=document.getElementById('game');
   if(!g)return;
   var portrait=window.innerWidth<window.innerHeight;
+  g.classList.remove('rot90');
   if(portrait){
-    g.classList.add('rot90');
-    var _s=window.innerWidth/1610;
+    g.style.transform='';g.style.webkitTransform='';
+    g.style.transformOrigin='';g.style.webkitTransformOrigin='';
+    var cw=0;
+    var els=g.querySelectorAll('*');
+    for(var i=0;i<els.length;i++){
+      var st=getComputedStyle(els[i]);
+      if(st.display==='none'||st.visibility==='hidden')continue;
+      var r=els[i].getBoundingClientRect();
+      if(r.width===0&&r.height===0)continue;
+      if(r.right>cw)cw=r.right;
+    }
+    if(cw<=0)cw=window.innerWidth;
+    var _s=Math.min(1,window.innerWidth/cw);
     g.style.transform='scale('+_s+')';
     g.style.webkitTransform='scale('+_s+')';
     g.style.transformOrigin='center center';
     g.style.webkitTransformOrigin='center center';
   }else{
-    g.classList.remove('rot90');
     g.style.transform='';
     g.style.webkitTransform='';
     g.style.transformOrigin='';
