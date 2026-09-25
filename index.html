@@ -1019,7 +1019,7 @@
   function applyRotate(){
   var g=document.getElementById('game');
   if(!g)return;
-  var portrait=window.innerWidth<window.innerHeight&&isPhone;
+  var portrait=window.innerWidth<window.innerHeight&&window.innerWidth<900;
   if(portrait){
     g.classList.add('rot90');
     var _s=window.innerWidth/1610;
@@ -1039,7 +1039,7 @@
   function applyPortrait(){
   var l=document.getElementById('launch');
   if(!l)return;
-  var p=window.innerWidth<window.innerHeight&&isPhone;
+  var p=window.innerWidth<window.innerHeight&&window.innerWidth<900;
   l.classList.remove('rot90'); l.classList.toggle('portrait', p); l.classList.toggle('plain', p && !supportsTransform);
   }
   window.goDirect=function(){
